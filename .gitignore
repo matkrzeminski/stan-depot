@@ -1,0 +1,11 @@
+venv
+.env
+.pytest_cache
+__pycache__
+htmlcov
+.coverage
+staticfiles/
+.vscode
+.idea
+stan_depot/media
+stan_depot.db
