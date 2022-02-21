@@ -162,6 +162,14 @@ EMAIL_BACKEND = env(
 )
 EMAIL_TIMEOUT = 5
 
+if env("DJANGO_EMAIL_BACKEND"):
+    EMAIL_HOST = env("EMAIL_HOST")
+    EMAIL_PORT = env("EMAIL_PORT")
+    EMAIL_USE_TLS = env.bool("EMAIL_USE_TLS", True)
+    EMAIL_USE_SSL = env.bool("EMAIL_USE_SSL", False)
+    EMAIL_HOST_USER = env("EMAIL_HOST_USER")
+    EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
+
 # ADMIN
 # ------------------------------------------------------------------------------
 ADMIN_URL = "admin/"

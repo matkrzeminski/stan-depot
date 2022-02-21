@@ -15,9 +15,9 @@ class Place(models.Model):
     def __str__(self):
         return f"{self.name} {self.address}"
 
-    # def get_absolute_url(self):
-    #     """Return absolute URL to the Stan Depot Contact page."""
-    #     return reverse("contact:home")
+    def get_absolute_url(self):
+        """Return absolute URL to the Stan Depot Contact page."""
+        return reverse("contact:home")
 
     def save(self, *args, **kwargs):
         """Gets all needed information for the Place object
@@ -42,22 +42,19 @@ class Place(models.Model):
                 try:
                     self.street = address["road"]
                 except KeyError:
-                    pass
-            finally:
-                if self.street is not None:
-                    try:
-                        self.street += f" {address['house_number']}"
-                    except KeyError:
-                        pass
-                else:
                     self.street = ""
+            else:
+                try:
+                    self.street += f" {address['house_number']}"
+                except KeyError:
+                    pass
 
             try:
                 self.city = address["city"]
             except KeyError:
-                self.city = address["county"]
-            finally:
-                if self.city is None:
+                try:
+                    self.city = address["county"]
+                except KeyError:
                     self.city = ""
 
         super().save(*args, **kwargs)

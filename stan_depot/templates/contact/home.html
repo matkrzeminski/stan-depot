@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block title %}
+  Contact
+{% endblock %}
+
+{% block javascript %}
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key={{ GOOGLE_API_KEY }}&callback=initMap&libraries=&v=weekly"
+    async
+  ></script>
+  <script src="{% static 'js/bootstrap5.js' %}"></script>
+{% endblock %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/bootstrap5.css' %}">
+  <style>
+    #map {
+      height: 75vh
+    }
+  </style>
+{% endblock %}
+
+{% block content %}
+  <div class="container-fluid">
+  <div class="row">
+  <div class="place-info col col-sm mt-md-3"></div>
+  </div>
+   <div class="row">
+      <div id="map" class="col"></div>
+       <div class="col-md-4">
+    <h2>For business enquiries contact us with this form.</h2>
+    <form action="{% url 'contact:home' %}" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form|crispy }}
+      <button class="btn btn-primary ms-xl-auto" type="submit">Contact</button>
+    </form>
+  </div>
+   </div>
+  </div>
+
+{% endblock %}
+
+
+
+{% block inline_javascript %}
+  <script>
+      function initMap() {
+        const warsaw = {lat: 52.237049, lng: 21.017532};
+        const placeInfo = document.querySelector('.place-info');
+        const map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 5,
+          center: warsaw,
+        });
+
+        {% for place in places %}
+          placeInfo.innerHTML = `
+          <h2>{{ place.street }}</h2>
+          <h3>{{ place.zip_code }} {{ place.city }}, {{ place.country }}</h3>
+          `
+          {% with place.name|cut:" " as name %}
+
+            const {{name}} = new google.maps.Marker({
+            position: {
+              lat: {{ place.latitude }},
+              lng: {{ place.longitude }}
+            },
+            map: map,
+          })
+            {{ name }}
+            .addListener('click', () => {
+            map.setZoom(12);
+            map.setCenter(
+              {{ name }}
+              .getPosition()
+          )
+            placeInfo.innerHTML = `
+          <h2>{{ place.street }}</h2>
+          <h3>{{ place.zip_code }} {{ place.city }}, {{ place.country }}</h3>
+          `
+          })
+          {% endwith %}
+        {% endfor %}
+      }
+    </script>
+{% endblock %}

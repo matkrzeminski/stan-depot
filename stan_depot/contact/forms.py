@@ -1,9 +1,9 @@
-from django.forms import ModelForm
+from django import forms
 
 from .models import Place
 
 
-class PlaceCreateForm(ModelForm):
+class PlaceCreateForm(forms.ModelForm):
     class Meta:
         model = Place
         fields = ["name", "address"]
@@ -13,7 +13,7 @@ class PlaceCreateForm(ModelForm):
         }
 
 
-class PlaceUpdateForm(ModelForm):
+class PlaceUpdateForm(forms.ModelForm):
     class Meta:
         model = Place
         fields = "__all__"
@@ -27,3 +27,9 @@ class PlaceUpdateForm(ModelForm):
             "latitude": "E.G. 52.2300795",
             "longitude": "E.G. 21.002446260760067",
         }
+
+
+class ContactForm(forms.Form):
+    subject = forms.CharField(max_length=120, required=True)
+    email = forms.EmailField(required=True)
+    message = forms.CharField(required=True, widget=forms.Textarea)
