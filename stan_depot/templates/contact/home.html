@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
 {% load static %}
+
 {% block title %}
   Contact
 {% endblock %}
@@ -39,49 +40,8 @@
   </div>
    </div>
   </div>
-
 {% endblock %}
 
-
-
 {% block inline_javascript %}
-  <script>
-      function initMap() {
-        const warsaw = {lat: 52.237049, lng: 21.017532};
-        const placeInfo = document.querySelector('.place-info');
-        const map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 5,
-          center: warsaw,
-        });
-
-        {% for place in places %}
-          placeInfo.innerHTML = `
-          <h2>{{ place.street }}</h2>
-          <h3>{{ place.zip_code }} {{ place.city }}, {{ place.country }}</h3>
-          `
-          {% with place.name|cut:" " as name %}
-
-            const {{name}} = new google.maps.Marker({
-            position: {
-              lat: {{ place.latitude }},
-              lng: {{ place.longitude }}
-            },
-            map: map,
-          })
-            {{ name }}
-            .addListener('click', () => {
-            map.setZoom(12);
-            map.setCenter(
-              {{ name }}
-              .getPosition()
-          )
-            placeInfo.innerHTML = `
-          <h2>{{ place.street }}</h2>
-          <h3>{{ place.zip_code }} {{ place.city }}, {{ place.country }}</h3>
-          `
-          })
-          {% endwith %}
-        {% endfor %}
-      }
-    </script>
+  <script src="{% static 'js/contact/index.js' %}"></script>
 {% endblock %}

@@ -3,9 +3,12 @@ from django.core.mail import EmailMessage
 
 from django.views.generic import TemplateView
 from django.views.generic.edit import FormView
+from rest_framework.generics import ListAPIView
 
 from .forms import ContactForm
 from .models import Place
+from .serializers import PlaceSerializer
+from .utils import permissions
 
 
 class ContactPageView(FormView):
@@ -29,3 +32,9 @@ class ContactPageView(FormView):
 
 class ThankYouPageView(TemplateView):
     template_name = "contact/thanks.html"
+
+
+class PlaceListAPIView(ListAPIView):
+    queryset = Place.objects.all()
+    serializer_class = PlaceSerializer
+    permission_classes = [permissions.ReadOnly]

@@ -13,6 +13,7 @@ urlpatterns = [
 
 if settings.DEBUG:
     urlpatterns += [
+        path('api-auth/', include('rest_framework.urls')),
         path(
             "400/",
             default_views.bad_request,

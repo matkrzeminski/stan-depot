@@ -58,10 +58,12 @@ DJANGO_APPS = [
 THIRD_PARTY_APPS = [
     "crispy_forms",
     "crispy_bootstrap5",
+    "rest_framework"
 ]
 
 LOCAL_APPS = [
-    "stan_depot.contact.apps.ContactConfig"
+    "stan_depot.contact.apps.ContactConfig",
+    "stan_depot.careers.apps.CareersConfig"
 ]
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
