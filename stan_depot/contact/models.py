@@ -1,6 +1,8 @@
 from django.db import models
 from django.urls import reverse
 
+from .utils.process_geocoder_data import process_geocoder_data
+
 
 class Place(models.Model):
     name = models.CharField(max_length=255)
@@ -29,32 +31,14 @@ class Place(models.Model):
                 self.address  # E.G. plac Defilad 1, 00-901 Warszawa and Pałac Kultury i Nauki
             )
 
-            try:
-                address = g.json["raw"]["address"]
-                self.latitude = g.json["raw"]["lat"]
-                self.longitude = g.json["raw"]["lon"]
-            except TypeError:
-                return super().save(*args, **kwargs)
+            data = process_geocoder_data(g)
 
-            try:
-                self.street = address["street"]
-            except KeyError:
-                try:
-                    self.street = address["road"]
-                except KeyError:
-                    self.street = ""
-            else:
-                try:
-                    self.street += f" {address['house_number']}"
-                except KeyError:
-                    pass
-
-            try:
-                self.city = address["city"]
-            except KeyError:
-                self.city = address["county"]
-
-            self.zip_code = address["postcode"]
-            self.country = address["country"]
+            if data:
+                self.latitude = data.get("latitude")
+                self.longitude = data.get("longitude")
+                self.street = data.get("street")
+                self.city = data.get("city")
+                self.zip_code = data.get("zip_code")
+                self.country = data.get("country")
 
         super().save(*args, **kwargs)

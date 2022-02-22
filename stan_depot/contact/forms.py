@@ -9,7 +9,7 @@ class PlaceCreateForm(forms.ModelForm):
         fields = ["name", "address"]
         help_texts = {
             "name": "E.G. Złote Tarasy",
-            "address": "E.G. Złota 59 00-120 Warszawa",
+            "address": "E.G. Złota 59, 00-120 Warszawa",
         }
 
 
