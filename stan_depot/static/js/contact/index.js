@@ -2,6 +2,15 @@ const getPlaces = async () => (
   fetch('http://127.0.0.1:8000/contact/api/places?format=json')
     .then(response => response.json())
     .then(data => data)
+    .catch(error => [{
+      "id":0,
+      'street': 'Złota 59',
+      'zip_code': '00-120',
+      'city': 'Warszawa',
+      'country': 'Polska',
+      'latitude': '52.2302445',
+      'longitude': '21.0039142'
+    }])
 );
 
 async function initMap() {
@@ -20,6 +29,7 @@ async function initMap() {
 
 
   places.forEach(place => {
+    if (place.latitude === "" || place.longitude === "") return
     const marker = new google.maps.Marker({
         position: {
           lat: parseFloat(place.latitude),

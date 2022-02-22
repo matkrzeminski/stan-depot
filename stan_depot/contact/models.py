@@ -21,7 +21,7 @@ class Place(models.Model):
 
     def save(self, *args, **kwargs):
         """Gets all needed information for the Place object
-        based on the value provided in the address field."""
+        based on the value provided in the address field and saves it."""
         if self._state.adding:
             import geocoder
 
@@ -29,12 +29,12 @@ class Place(models.Model):
                 self.address  # E.G. plac Defilad 1, 00-901 Warszawa and Pałac Kultury i Nauki
             )
 
-            self.latitude = g.json["raw"]["lat"]
-            self.longitude = g.json["raw"]["lon"]
-            address = g.json["raw"]["address"]
-
-            self.zip_code = address["postcode"]
-            self.country = address["country"]
+            try:
+                address = g.json["raw"]["address"]
+                self.latitude = g.json["raw"]["lat"]
+                self.longitude = g.json["raw"]["lon"]
+            except TypeError:
+                return super().save(*args, **kwargs)
 
             try:
                 self.street = address["street"]
@@ -52,9 +52,9 @@ class Place(models.Model):
             try:
                 self.city = address["city"]
             except KeyError:
-                try:
-                    self.city = address["county"]
-                except KeyError:
-                    self.city = ""
+                self.city = address["county"]
+
+            self.zip_code = address["postcode"]
+            self.country = address["country"]
 
         super().save(*args, **kwargs)
