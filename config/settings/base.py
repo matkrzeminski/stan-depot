@@ -55,15 +55,11 @@ DJANGO_APPS = [
     "django.contrib.admin",
     "django.forms",
 ]
-THIRD_PARTY_APPS = [
-    "crispy_forms",
-    "crispy_bootstrap5",
-    "rest_framework"
-]
+THIRD_PARTY_APPS = ["crispy_forms", "crispy_bootstrap5", "rest_framework"]
 
 LOCAL_APPS = [
     "stan_depot.contact.apps.ContactConfig",
-    "stan_depot.careers.apps.CareersConfig"
+    "stan_depot.careers.apps.CareersConfig",
 ]
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
@@ -128,8 +124,11 @@ TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "DIRS": [str(APPS_DIR / "templates")],
-        "APP_DIRS": True,
         "OPTIONS": {
+            "loaders": [
+                "django.template.loaders.filesystem.Loader",
+                "django.template.loaders.app_directories.Loader",
+            ],
             "context_processors": [
                 "django.template.context_processors.debug",
                 "django.template.context_processors.request",
@@ -138,7 +137,7 @@ TEMPLATES = [
                 "django.template.context_processors.static",
                 "django.template.context_processors.tz",
                 "django.contrib.messages.context_processors.messages",
-                "stan_depot.contact.utils.context_processors.settings_context"
+                "stan_depot.contact.utils.context_processors.settings_context",
             ],
         },
     }

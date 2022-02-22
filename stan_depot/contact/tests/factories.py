@@ -20,4 +20,4 @@ class PlaceFactory(factory.django.DjangoModelFactory):
 
 @pytest.fixture
 def place():
-    return PlaceFactory
+    return PlaceFactory()

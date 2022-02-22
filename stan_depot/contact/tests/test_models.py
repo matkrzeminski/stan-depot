@@ -1,26 +1,23 @@
 import pytest
 
-from .factories import PlaceFactory
+from .factories import place
 from ..utils.process_geocoder_data import process_geocoder_data
 
 pytestmark = pytest.mark.django_db
 
 
-def test__str__():
-    place = PlaceFactory()
+def test__str__(place):
     assert place.__str__() == f"{place.name} {place.address}"
     assert str(place) == f"{place.name} {place.address}"
 
 
-def test_get_absolute_url():
-    place = PlaceFactory()
+def test_get_absolute_url(place):
     url = place.get_absolute_url()
     assert url == "/contact/"
 
 
-def test_save():
+def test_save(place):
     import geocoder
-    place = PlaceFactory()
     g = geocoder.osm(place.address)
     data = process_geocoder_data(g)
     if data:
@@ -37,4 +34,3 @@ def test_save():
         assert place.city == ""
         assert place.zip_code == ""
         assert place.country == ""
-
