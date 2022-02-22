@@ -9,14 +9,15 @@ async function initMap() {
   const placeInfo = document.querySelector('.place-info');
   const warsaw = {lat: 52.237049, lng: 21.017532};
   const map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 5,
+    zoom: 4,
     center: warsaw,
+    minZoom: 3,
+
   });
 
-  placeInfo.innerHTML = `
-          <h2>${places[0]['street']}</h2>
-          <h3>${places[0]['zip_code']} ${places[0]['city']}, ${places[0]['country']}</h3>
-          `;
+  placeInfo.firstElementChild.textContent = `${places[0]['street']}`;
+  placeInfo.lastElementChild.textContent = `${places[0]['zip_code']} ${places[0]['city']}, ${places[0]['country']}`;
+
 
   places.forEach(place => {
     const marker = new google.maps.Marker({
@@ -35,10 +36,8 @@ async function initMap() {
         lng: parseFloat(place.longitude)
       });
 
-      placeInfo.innerHTML = `
-          <h2>${place['street']}</h2>
-          <h3>${place['zip_code']} ${place['city']}, ${place['country']}</h3>
-            `;
+      placeInfo.firstElementChild.textContent = `${place['street']}`;
+      placeInfo.lastElementChild.textContent = `${place['zip_code']} ${place['city']}, ${place['country']}`;
     });
   });
 }

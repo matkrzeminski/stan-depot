@@ -16,11 +16,6 @@ class ContactPageView(FormView):
     form_class = ContactForm
     success_url = "thanks/"
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["places"] = Place.objects.all()
-        return context
-
     def form_valid(self, form):
         subject = form.cleaned_data["email"] + " " + form.cleaned_data["subject"]
         email = form.cleaned_data["email"]

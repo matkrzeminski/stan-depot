@@ -25,20 +25,23 @@
 
 {% block content %}
   <div class="container-fluid">
-  <div class="row">
-  <div class="place-info col col-sm mt-md-3"></div>
-  </div>
-   <div class="row">
+    <div class="row">
+      <div class="place-info col col-sm mt-md-3">
+        <h2></h2>
+        <h3></h3>
+      </div>
+    </div>
+    <div class="row">
       <div id="map" class="col"></div>
-       <div class="col-md-4">
-    <h2>For business enquiries contact us with this form.</h2>
-    <form action="{% url 'contact:home' %}" method="post" enctype="multipart/form-data">
-      {% csrf_token %}
-      {{ form|crispy }}
-      <button class="btn btn-primary ms-xl-auto" type="submit">Contact</button>
-    </form>
-  </div>
-   </div>
+      <div class="col-md-4">
+        <h2>For business enquiries contact us with this form.</h2>
+        <form action="{% url 'contact:home' %}" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          {{ form|crispy }}
+          <button class="btn btn-primary ms-xl-auto" type="submit">Contact</button>
+        </form>
+      </div>
+    </div>
   </div>
 {% endblock %}
 
