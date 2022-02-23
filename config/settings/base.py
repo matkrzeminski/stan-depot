@@ -55,7 +55,7 @@ DJANGO_APPS = [
     "django.contrib.admin",
     "django.forms",
 ]
-THIRD_PARTY_APPS = ["crispy_forms", "crispy_bootstrap5", "rest_framework"]
+THIRD_PARTY_APPS = ["crispy_forms", "crispy_bootstrap5", "rest_framework", 'markdownx']
 
 LOCAL_APPS = [
     "stan_depot.contact.apps.ContactConfig",

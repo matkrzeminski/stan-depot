@@ -9,10 +9,12 @@ whitenoise==6.0.0  # https://github.com/evansd/whitenoise
 django==3.2.12  # pyup: < 4.0  # https://www.djangoproject.com/
 django-environ==0.8.1  # https://github.com/joke2k/django-environ
 django-model-utils==4.2.0  # https://github.com/jazzband/django-model-utils
+django-autoslug==1.9.8  # https://github.com/justinmayer/django-autoslug/
 django-crispy-forms==1.14.0  # https://github.com/django-crispy-forms/django-crispy-forms
 crispy-bootstrap5==0.6  # https://github.com/django-crispy-forms/crispy-bootstrap5
-djangorestframework==3.13.1
+djangorestframework==3.13.1  # https://github.com/encode/django-rest-framework
+django-markdownx==3.0.1  # https://github.com/neutronX/django-markdownx
 
 # App specific packages
 # ------------------------------------------------------------------------------
-geocoder==1.38.1
+geocoder==1.38.1  # https://github.com/DenisCarriere/geocoder

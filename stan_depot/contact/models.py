@@ -15,7 +15,7 @@ class Place(models.Model):
     longitude = models.CharField(max_length=255, blank=True)
 
     def __str__(self):
-        return f"{self.name} {self.address}"
+        return f"{self.name} at {self.address}"
 
     def get_absolute_url(self):
         """Return absolute URL to the Stan Depot Contact page."""
