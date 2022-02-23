@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from .forms import PlaceCreateForm, PlaceUpdateForm
-from .models import Place
+from stan_depot.careers.models import Place
 
 
 @admin.register(Place)

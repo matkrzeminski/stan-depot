@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% for offer in offers %}
+
+    <h1><a href="{% url 'careers:detail' offer.slug %}">{{ offer.title }}</a></h1>
+  {% endfor %}
+
+{% endblock %}
