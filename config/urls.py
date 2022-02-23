@@ -8,13 +8,14 @@ from django.views import defaults as default_views
 urlpatterns = [
     path("", TemplateView.as_view(template_name="pages/home.html"), name="home"),
     path("contact/", include("stan_depot.contact.urls"), name="contact"),
-    path('markdownx/', include('markdownx.urls')),
+    path("markdownx/", include("markdownx.urls")),
+    path("careers/", include("stan_depot.careers.urls"), name="careers"),
     path(settings.ADMIN_URL, admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
     urlpatterns += [
-        path('api-auth/', include('rest_framework.urls')),
+        path("api-auth/", include("rest_framework.urls")),
         path(
             "400/",
             default_views.bad_request,

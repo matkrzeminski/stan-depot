@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.core.mail import EmailMessage
+from django.urls import reverse
 
 from django.views.generic import TemplateView
 from django.views.generic.edit import FormView
@@ -14,7 +15,9 @@ from .utils import permissions
 class ContactPageView(FormView):
     template_name = "contact/home.html"
     form_class = ContactForm
-    success_url = "thanks/"
+
+    def get_success_url(self):
+        return reverse("contact:thanks")
 
     def form_valid(self, form):
         subject = form.cleaned_data["email"] + " " + form.cleaned_data["subject"]

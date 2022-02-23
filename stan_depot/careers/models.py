@@ -1,6 +1,8 @@
 from autoslug import AutoSlugField
 from django.db import models
+from django.urls import reverse
 from markdownx.models import MarkdownxField
+from markdownx.utils import markdownify
 
 from model_utils.models import TimeStampedModel
 
@@ -33,3 +35,9 @@ class JobOffer(TimeStampedModel):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse("careers:detail", kwargs={"slug": self.slug})
+
+    def formatted_markdown(self):
+        return markdownify(self.description)
