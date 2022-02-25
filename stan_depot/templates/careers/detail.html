@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
+  <h1>offer.title</h1>
   {{ offer.formatted_markdown|safe }}
   <form action="{% url 'careers:detail' offer.slug %}" method="post" enctype="multipart/form-data">
     {% csrf_token %}

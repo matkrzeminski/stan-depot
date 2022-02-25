@@ -7,8 +7,8 @@ pytestmark = pytest.mark.django_db
 
 
 def test__str__(place):
-    assert place.__str__() == f"{place.name} {place.address}"
-    assert str(place) == f"{place.name} {place.address}"
+    assert place.__str__() == f"{place.name} at {place.address}"
+    assert str(place) == f"{place.name} at {place.address}"
 
 
 def test_get_absolute_url(place):

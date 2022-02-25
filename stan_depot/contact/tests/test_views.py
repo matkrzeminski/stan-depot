@@ -23,7 +23,7 @@ def test_contact_form_valid(rf):
     request = rf.post(reverse("contact:home"), form_data)
     response = ContactPageView.as_view()(request)
     assert response.status_code == 302
-    assert response.url == "thanks/"
+    assert response.url == "/contact/thank-you/"
 
 
 def test_thanks_get_view(rf):

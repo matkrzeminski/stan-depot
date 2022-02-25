@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+  <h1>Job offers list</h1>
   {% for offer in offers %}
 
     <h1><a href="{% url 'careers:detail' offer.slug %}">{{ offer.title }}</a></h1>

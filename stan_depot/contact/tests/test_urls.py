@@ -12,13 +12,13 @@ def test_contact_resolve():
 
 
 def test_thanks_reverse():
-    """contact:thanks should reverse to /contact/thanks/"""
-    assert reverse("contact:thanks") == "/contact/thanks/"
+    """contact:thanks should reverse to /contact/thank-you/"""
+    assert reverse("contact:thanks") == "/contact/thank-you/"
 
 
 def test_thanks_resolve():
-    """/contact/thanks/ should resolve to contact:thanks."""
-    assert resolve("/contact/thanks/").view_name == "contact:thanks"
+    """/contact/thank-you/ should resolve to contact:thanks."""
+    assert resolve("/contact/thank-you/").view_name == "contact:thanks"
 
 
 def test_place_list_reverse():
