@@ -10,6 +10,7 @@ urlpatterns = [
     path("contact/", include("stan_depot.contact.urls"), name="contact"),
     path("markdownx/", include("markdownx.urls")),
     path("careers/", include("stan_depot.careers.urls"), name="careers"),
+    path("blog/", include("stan_depot.blog.urls"), name="blog"),
     path(settings.ADMIN_URL, admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
