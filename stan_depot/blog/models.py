@@ -80,5 +80,6 @@ class Post(TimeStampedModel):
 
         return True
 
-    def formatted_markdown(self):
+    @property
+    def formatted_content(self):
         return markdownify(self.content)
