@@ -11,6 +11,7 @@ class PostSerializer(serializers.HyperlinkedModelSerializer):
         fields = [
             "id",
             "title",
+            "slug",
             "hero",
             "thumbnail",
             "content",
