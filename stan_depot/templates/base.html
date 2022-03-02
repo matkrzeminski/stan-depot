@@ -7,31 +7,31 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{% block title %}Stan Depot{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'css/bootstrap5.css' %}"/>
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  <script defer src="{% static 'js/bootstrap5.js' %}"></script>
 
-  {% block css %}
-
-    <link rel="stylesheet" href="{% static 'css/bootstrap5.css' %}"/>
-
-  {% endblock %}
-
-  {% block javascript %}
-
-    <script defer src="{% static 'js/bootstrap5.js' %}"></script>
-
-  {% endblock %}
+  {% block css %}{% endblock %}
+  {% block javascript %}{% endblock %}
 
 </head>
 <body>
-<h1>HELLO DJANGO</h1>
+<nav class="nav">
+  <a class='nav-item' href="{% url 'home' %}">Stan Depot</a>
+  <a class='nav-item' href="{% url 'blog:list' %}">Blog</a>
+  <a class='nav-item' href="{% url 'careers:list' %}">Careers</a>
+  <a class='nav-item' href="{% url 'contact:home' %}">Contact</a>
+</nav>
 
 {% block content %}
 
 {% endblock %}
-{#<script>#}
-  {% block inline_javascript %}
 
-  {% endblock %}
+<footer class="footer">
+  <p class="footer-item">&copy; Mateusz Krzemiński</p>
+</footer>
+{% block inline_javascript %}
 
-{#</script>#}
+{% endblock %}
 </body>
 </html>
