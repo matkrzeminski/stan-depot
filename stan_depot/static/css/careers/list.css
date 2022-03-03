@@ -1,0 +1,108 @@
+.offer {
+  max-width: 82vw;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.offer-item {
+  border: 1px solid #ADADAD;
+  border-radius: 5px;
+  margin: 2rem 0;
+  padding: 1rem 0.75rem;
+  display: grid;
+  column-gap: 1rem;
+  grid-template-rows: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas:
+    "title title"
+    "salary salary"
+    "location location"
+    "status btn";
+}
+
+.offer-title {
+  grid-area: title;
+  font-size: 1.25rem;
+  font-weight: normal;
+}
+
+.offer-salary {
+  grid-area: salary;
+  font-size: 1.15rem;
+  font-weight: normal;
+}
+
+.offer-location {
+  grid-area: location;
+  font-size: 1.15rem;
+  font-weight: normal;
+}
+
+.offer-status {
+  grid-area: status;
+  font-size: 1.15rem;
+  font-weight: normal;
+}
+
+.offer-status-ongoing {
+  color: #28B94C;
+}
+
+.offer-status-opening {
+  color: #E8E820;
+}
+
+.offer-btn {
+  grid-area: btn;
+  display: inline-block;
+  width: 75%;
+  justify-self: center;
+  align-self: start;
+  padding: 0.5rem 0.75rem;
+  border-radius: 7px;
+  text-align: center;
+  vertical-align: center;
+  border: 3px solid;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(to left, #743AD5, #D53A9D);
+}
+
+@media (min-width: 760px) {
+  .offer-item {
+    padding-bottom: 0;
+    gap: 2rem;
+    grid-template-rows: repeat(2, 2fr);
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-areas:
+    "title title salary salary btn"
+    ". . location location . "
+    "status . . . . ";
+  }
+
+  .offer-btn {
+    width: 66%;
+  }
+
+  .offer-title {
+    font-size: 1.42rem;
+  }
+
+  .offer-salary {
+    font-size: 1.27rem;
+  }
+
+  .offer-location {
+    font-size: 1.27rem;
+  }
+
+  .offer-status {
+    font-size: 1.27rem;
+  }
+
+}
+
+@media (min-width: 1350px) {
+  .offer-btn {
+    width: 45%;
+  }
+}

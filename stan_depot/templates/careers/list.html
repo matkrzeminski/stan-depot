@@ -1,10 +1,31 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/careers/list.css' %}">
+{% endblock %}
+
+{% block title %}
+  Job listings
+{% endblock %}
 
 {% block content %}
-  <h1>Job offers list</h1>
-  {% for offer in offers %}
-
-    <h1><a href="{% url 'careers:detail' offer.slug %}">{{ offer.title }}</a></h1>
-  {% endfor %}
-
+  <div class="offer">
+    {% for offer in offers %}
+      {% if offer.status != "closed" %}
+        <div class="offer-item">
+          <h2 class="offer-title"><a href="{% url 'careers:detail' offer.slug %}">{{ offer.title }}</a></h2>
+          <h3 class="offer-salary">{{ offer.compensation_min }} - {{ offer.compensation_max }} PLN + vat</h3>
+          <a class='offer-btn' href="{% url 'careers:detail' offer.slug %}">Apply</a>
+          <h3 class="offer-status{% if offer.status == 'ongoing' %}-ongoing{% elif offer.status == 'opening soon' %}-opening
+          {% endif %}">{{ offer.status }}</h3>
+          <h3 class="offer-location">
+            {% if offer.location.city == "" %}Remote
+            {% else %} {{ offer.location.city }}
+            {% endif %}
+          </h3>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
 {% endblock %}
