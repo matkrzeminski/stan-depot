@@ -1,0 +1,36 @@
+.offer-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 1rem auto 0 auto;
+}
+
+.offer-contact > form {
+    display: flex;
+    flex-direction: column;
+  }
+
+.btn {
+  border: 3px solid;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(to left, #743AD5, #D53A9D);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+@media (min-width: 760px) {
+  .offer-details {
+    margin-top: 3rem;
+    max-width: 75vw;
+    flex-direction: row;
+    gap: 1.5rem;
+  }
+  .offer-description {
+    flex-basis: 66%;
+  }
+  .btn {
+    align-self: flex-end;
+    margin: 0;
+  }
+}
