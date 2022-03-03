@@ -1,5 +1,20 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+  Thank You!
+{% endblock %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/careers/thanks.css' %}">
+{% endblock %}
 
 {% block content %}
-<h1>Thank You for applying to Stan Depot! We will reach out to You as soon as we review Your resume.</h1>
+  <div class="thanks">
+    <h1 class="thanks-message">Thank You for applying to Stan Depot! We will reach out to You as soon as we review Your
+      <span class="thanks-highlight">resume</span>.</h1>
+    <div class="thanks-image-container">
+      <img class="thanks-image" src="{% static 'images/careers-thank-you.jpg' %}" alt="People working.">
+    </div>
+  </div>
 {% endblock %}

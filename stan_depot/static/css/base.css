@@ -37,7 +37,7 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
-  border-top: 2px solid;
+  border-top: 1px solid;
   border-image-slice: 1;
   border-image-source: linear-gradient(to right, #743AD5, #D53A9D);
 }
@@ -62,16 +62,16 @@ a:hover, a:active, a:focus {
   background: linear-gradient(to left, #D53A9D, #743AD5);
   min-height: 4.15rem;
   align-items: center;
-  border-bottom: 2px solid;
+  border-bottom: 1px solid;
   border-image-slice: 1;
   border-image-source: linear-gradient(to left, #743AD5, #D53A9D);
 }
 
 .nav-item {
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   text-decoration: none;
   color: white;
-  padding: .5rem 0.75rem;
+  padding: .35rem 0.75rem;
 }
 
 .active {
@@ -80,12 +80,12 @@ a:hover, a:active, a:focus {
 
 .nav-item:nth-of-type(1) {
   margin-right: auto;
-  margin-left: 0.75rem;
-  font-size: 1.25rem;
+  margin-left: 0.5rem;
+  font-size: 1.15rem;
 }
 
 .nav-item:nth-of-type(1):hover {
-  color: rgb(215, 108, 172);
+  /*color: rgb(215, 108, 172);*/
 }
 
 .nav-item:last-of-type {
@@ -125,7 +125,7 @@ a:hover, a:active, a:focus {
 
 @media (min-width: 760px) {
   .nav {
-    border-width: 3px;
+    border-width: 2x;
     min-height: 5rem;
   }
 
@@ -145,7 +145,7 @@ a:hover, a:active, a:focus {
   }
 
   .footer {
-    border-width: 3px;
+    border-width: 2px;
     font-size: 1.2rem;
   }
 }
