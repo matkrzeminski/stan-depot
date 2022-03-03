@@ -19,9 +19,9 @@
 }
 
 .offer-contact > form {
-    display: flex;
-    flex-direction: column;
-  }
+  display: flex;
+  flex-direction: column;
+}
 
 .btn {
   border: 3px solid;
@@ -29,7 +29,6 @@
   border-image-source: linear-gradient(to left, #743AD5, #D53A9D);
   margin: 0 auto 1.25rem auto;
 }
-
 
 @media (min-width: 760px) {
   .offer-details {
@@ -39,9 +38,11 @@
     justify-content: space-around;
     gap: 1.5rem;
   }
+
   .offer-description {
     flex-basis: 33%;
   }
+
   .btn {
     align-self: flex-end;
     margin: 0;

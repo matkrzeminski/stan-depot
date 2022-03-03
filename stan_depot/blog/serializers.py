@@ -13,7 +13,6 @@ class PostSerializer(serializers.HyperlinkedModelSerializer):
             "title",
             "slug",
             "hero",
-            "thumbnail",
             "content",
             "formatted_content",
             "status",

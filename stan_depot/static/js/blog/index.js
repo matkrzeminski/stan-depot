@@ -4,6 +4,7 @@ let app = new Vue({
   data: {
     posts: [],
     pageSize: 1,
+    width: window.innerWidth,
   },
   methods: {
     async getPosts(pageSize) {
@@ -23,6 +24,11 @@ let app = new Vue({
       if (bottomOfWindow) {
         await this.getPosts(this.pageSize);
       }
+    },
+    checkWidth() {
+      console.log(self.width);
+      self.width = window.innerWidth;
+      console.log(self.width);
     }
   },
   async beforeMount() {
@@ -30,5 +36,8 @@ let app = new Vue({
   },
   async mounted() {
     window.addEventListener('scroll', await this.scrollGetPosts);
-  }
+    window.addEventListener('resize', this.checkWidth);
+
+  },
 });
+
