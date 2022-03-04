@@ -1,11 +1,24 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}
   Thank you
 {% endblock %}
 
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/contact/thanks.css' %}">
+{% endblock %}
+
 {% block content %}
-  <h1>Thank you for reaching out!</h1>
-  <p>From this point on everything is on us. There is no need for you to do anything more. We will respond as quickly as
-    we can.</p>
+  <div class="thanks">
+    <div class="thanks-message">
+      <h1>Thank you for <span class="thanks-highlight">reaching out</span>.</h1>
+      <p class="">
+        From this point on everything is on us. There is no need for You to do anything more. We will respond as quickly
+        as we can.</p>
+    </div>
+    <div class="thanks-image-container">
+      <img class="thanks-image" src="{% static 'images/thank-you.jpg' %}" alt="People working.">
+    </div>
+  </div>
 {% endblock %}

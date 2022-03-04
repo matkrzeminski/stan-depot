@@ -14,29 +14,25 @@
 {% endblock %}
 
 {% block css %}
-  <style>
-    #map {
-      height: 75vh
-    }
-  </style>
+  <link rel="stylesheet" href="{% static 'css/contact/home.css' %}">
 {% endblock %}
 
 {% block content %}
   <div class="container-fluid">
     <div class="row">
       <div class="place-info col col-sm mt-md-3">
-        <h2></h2>
-        <h3></h3>
+        <h2 class="street"></h2>
+        <h3 class="city"></h3>
       </div>
     </div>
     <div class="row">
       <div id="map" class="col"></div>
-      <div class="col-md-4">
-        <h2>For business enquiries use this form.</h2>
+      <div class="col-lg-4">
+        <h2>For business enquiries use this form. 👇</h2>
         <form action="{% url 'contact:home' %}" method="post" enctype="multipart/form-data">
           {% csrf_token %}
           {{ form|crispy }}
-          <button class="btn btn-primary ms-xl-auto" type="submit">Contact</button>
+          <button class="contact-btn" type="submit">Contact</button>
         </form>
       </div>
     </div>
