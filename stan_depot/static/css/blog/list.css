@@ -29,6 +29,7 @@
 .post-thumbnail img {
   width: 95%;
   border-radius: 40px;
+  object-fit: contain;
 }
 
 .post-info {
