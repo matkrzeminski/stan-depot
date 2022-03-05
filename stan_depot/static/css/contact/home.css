@@ -6,7 +6,6 @@
 .street {
   font-size: 1.3rem;
   margin-top: 1rem;
-  font-weight: normal;
   background-image: linear-gradient(45deg, #F3EC78, #D56685);
   background-size: 100%;
   -webkit-background-clip: text;
@@ -30,6 +29,15 @@
   font-size: 1.3rem;
 }
 
+.contact-btn:hover, .contact-btn:active, .contact-btn:focus {
+  background-image: linear-gradient(45deg, #F3EC78, #D56685);
+  background-size: 100%;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}
+
 @media (min-width: 995px) {
   .container-fluid {
     min-height: 92vh;
@@ -37,5 +45,13 @@
 
   #map {
     margin-bottom: 0;
+  }
+
+  .street {
+    font-size: 1.65rem;
+  }
+
+  .city {
+    font-size: 1.4rem;
   }
 }

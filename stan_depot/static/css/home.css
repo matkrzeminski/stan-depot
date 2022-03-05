@@ -1,0 +1,80 @@
+.home {
+  background: url('../images/stars.jpg');
+}
+
+.carousel-inner {
+  max-height: 15rem;
+  overflow: hidden;
+}
+
+.home-item {
+  text-align: center;
+}
+
+.home-info {
+  padding: 0.5rem 0.25rem;
+  color: white;
+}
+
+.home-image {
+  width: 100%;
+  display: block;
+}
+
+.posts {
+  background: url("../images/drops.jpg");
+  padding: 1rem;
+}
+
+.post {
+  margin: 1rem;
+}
+
+.post-image-container {
+  overflow: hidden;
+}
+
+.post-image {
+  transition: transform .5s ease;
+}
+
+.post-image:hover {
+  filter: blur(2px);
+  transform: scale(1.2);
+}
+
+@media (min-width: 760px) {
+  .carousel-inner {
+    max-height: 20rem;
+  }
+
+  .home-info {
+    font-size: 1.4rem;
+  }
+}
+
+@media (min-width: 1000px) {
+  .home-item {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .home-item:nth-last-of-type(odd) .home-image-container {
+    order: 2;
+  }
+
+  .home-image-container {
+    flex-basis: 25vw;
+  }
+
+  .home-info {
+    flex-basis: 75vw;
+    align-self: center;
+    font-size: 1.5rem;
+  }
+
+  .posts {
+    padding: 1rem 1rem 2rem 1rem;
+  }
+}
