@@ -13,7 +13,7 @@ def test_job_offer_list_view(rf):
     url = reverse("careers:list")
     request = rf.get(url)
     response = JobOfferListView.as_view()(request)
-    assertContains(response, "Job offers list")
+    assertContains(response, "Job listings")
 
 
 def test_job_offer_detail_view(rf, job_offer):

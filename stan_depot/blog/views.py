@@ -18,7 +18,7 @@ class BlogPostDetailView(DetailView):
 
 
 class PostListAPIView(ListAPIView):
-    queryset = Post.objects.all()
+    queryset = Post.published.all()
     serializer_class = PostSerializer
     pagination_class = PostPagination
     permission_classes = [permissions.ReadOnly]

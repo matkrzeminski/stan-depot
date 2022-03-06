@@ -8,7 +8,7 @@ from django.views import defaults as default_views
 from stan_depot.blog.models import Post
 
 urlpatterns = [
-    path("", ListView.as_view(template_name="pages/home.html", queryset=Post.objects.all()[:3]), name="home"),
+    path("", ListView.as_view(template_name="pages/home.html", queryset=Post.published.all()[:3]), name="home"),
     path("contact/", include("stan_depot.contact.urls"), name="contact"),
     path("markdownx/", include("markdownx.urls")),
     path("careers/", include("stan_depot.careers.urls"), name="careers"),
