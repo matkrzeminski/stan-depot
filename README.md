@@ -19,11 +19,10 @@ Admin area is used to create, edit and delete blog posts, has a Markdown syntax 
 Careers form has a custom backend validation that checks whether the content-type is correct.
 
 Contact page uses Google Maps API to show the locations of the company. 
-You can add locations in the admin area by entering the address or a location name. <br/>
-Based on what you provided the third party API will be used to get the coordinates and all the needed information which can be changed at any time.
+You can add locations in the admin area by entering the address or a location name. Based on what you provided the third party API will be used to get the coordinates and all the needed information which can be changed at any time.
 
 ## <span id="overview">Overview</span>
-gif goes here
+![Stan Depot overview](./readme_assets/stan_depot.gif)
 
 ## <span id="stack">Stack</span>
 - [Python](https://www.python.org/)
@@ -36,12 +35,18 @@ gif goes here
 - [PostgreSQL](https://www.postgresql.org/)
 ## <span id="installation">Installation</span>
 Create .env file in the root directory with filled content of the [.env.example](.env.example) file. <br/>
+At the very least you need to provide the following variables:
+```
+DJANGO_SECRET_KEY=secret
+DJANGO_DEBUG=True
+GOOGLE_API_KEY=your_google_api_key
+```
+
 If you are not able to use PostgreSQL, SQLite file will be created and used automatically.
 ```angular2html
 $ python3 -m venv venv
 $ source venv/bin/activate
-$ pip install -r ./requirements/local.txt
-$ python3 manage.py makemigrations
+$ python3 -m pip install -r ./requirements/local.txt
 $ python3 manage.py migrate
 $ python3 manage.py collectstatic --noinput
 $ python3 manage.py createsuperuser
@@ -56,4 +61,11 @@ To run tests, run `coverage run -m pytest`.
 
 ![coverage report](./readme_assets/coverage_report.png)
 ## <span id="screenshots">Screenshots</span> 
-screenshots go here
+
+|                       Landing Page                        |                       Blog                        |                     Careers                      
+|:---------------------------------------------------------:|:-------------------------------------------------:| :-----------------------------------------------------: | 
+| <img src="./readme_assets/landing_page.png" width="100%"> | <img src="./readme_assets/blog.jpg" width="100%"> | <img src="./readme_assets/careers.png" width="100%">
+
+|                       Contact                        |                 Business Inquiry thank you page                 |                     Careers thank you page                     
+|:----------------------------------------------------:|:---------------------------------------------------------------:| :-----------------------------------------------------: | 
+| <img src="./readme_assets/contact.png" width="100%"> | <img src="./readme_assets/thank_you_business.png" width="100%"> | <img src="./readme_assets/thank_you_careers.png" width="100%">
