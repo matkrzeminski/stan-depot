@@ -1,4 +1,5 @@
 import pytest
+from django.core.exceptions import ValidationError
 from django.urls import reverse
 from pytest_django.asserts import assertContains
 from .factories import job_offer, generate_pdf, generate_doc, generate_docx
@@ -70,3 +71,16 @@ def test_job_offer_detail_form_invalid(rf, job_offer):
     response = JobOfferDetailView.as_view()(request, slug=job_offer.slug)
     assert response.status_code == 200
     assert response.template_name[0] == "careers/detail.html"
+
+
+def test_job_offer_detail_form_invalid_content_type(rf, generate_pdf, job_offer):
+    with open(generate_pdf, "rb") as file:
+        file.content_type = "image/png"
+        form_data = {"email": "test@test.com", "first_name": "Test", "resume": file}
+        url = reverse("careers:detail", kwargs={"slug": job_offer.slug})
+        request = rf.post(url, data=form_data)
+        with pytest.raises(ValidationError) as err:
+            response = JobOfferDetailView.as_view()(request, slug=job_offer.slug)
+            err.match("Content type not supported.")
+            assert response.status_code == 200
+            assert response.template_name[0] == "careers/detail.html"

@@ -25,15 +25,3 @@ def test_blog_post_detail_view(rf, post):
     assertContains(response, post.formatted_content)
     assert response.status_code == 200
     assert response.template_name[0] == "blog/detail.html"
-
-
-def test_post_list_api_view(rf, post):
-    url = reverse("blog:api")
-    request = rf.get(url)
-    response = PostListAPIView.as_view()(request)
-    assertContains(response, str(post.title))
-    assertContains(response, str(post.slug))
-    assertContains(response, str(post.hero))
-    assertContains(response, str(post.content))
-    assertContains(response, str(post.formatted_content))
-    assertContains(response, str(post.status))

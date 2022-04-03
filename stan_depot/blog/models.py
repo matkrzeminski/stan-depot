@@ -1,9 +1,4 @@
-import os
-from io import BytesIO
-
-from PIL import Image
 from autoslug import AutoSlugField
-from django.core.files.base import ContentFile
 from django.db import models
 from django.urls import reverse
 from django.utils import timezone
@@ -22,7 +17,7 @@ class Post(TimeStampedModel):
         PUBLISHED = "published", "Published"
         DRAFT = "draft", "Draft"
 
-    title = models.CharField("Title", max_length=120)
+    title = models.CharField(("Title"), max_length=120)
     hero = models.ImageField("Hero", upload_to="blog/heroes", blank=True)
     slug = AutoSlugField(
         "Post address", unique=True, always_update=False, populate_from="title"
